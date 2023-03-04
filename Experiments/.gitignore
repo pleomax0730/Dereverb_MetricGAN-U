@@ -1,0 +1,11 @@
+*.wav
+*.pyc
+Conv-TasNet/checkpoint/mse2l1/*
+ponddy_dereverb/*
+hifigan-denoiser/checkpoint/*
+result.sisdr.csv
+result.csv
+lstm/ckeckpoint/log/*
+lstm/ckeckpoint/model/best_model
+script.sh
+speechbrain/*
