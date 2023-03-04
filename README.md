@@ -5,7 +5,7 @@
 </div>
 
 <details>
-  <summary>Experiments</summary>
+  <summary>Experiment</summary>
   
 ## Step0: Pre-Work
 
@@ -193,7 +193,7 @@ sudo docker push ponddy/dereverb:latest
 </details>
 
 <details>
-  <summary>Reports</summary>
+  <summary>Report</summary>
 
 ## GOP score table
 
