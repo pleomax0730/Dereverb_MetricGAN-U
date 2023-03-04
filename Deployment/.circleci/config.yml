@@ -1,0 +1,37 @@
+version: 2
+
+jobs:
+  deploy:
+    machine: true
+
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "91:40:ed:63:ac:98:7a:04:58:31:13:70:f0:48:4f:a6"
+      - run:
+          name: deploy!
+          command: |
+            export MSG="#${CIRCLE_BUILD_NUM} ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_BRANCH} is updating"
+            curl -X POST \
+            -H 'Content-type: application/json' \
+            --data '{"text":"'"${MSG}"'"}' \
+            "${SLACK_WEBHOOK}"
+            # Deploy
+            ssh ubuntu@ec2-100-21-111-140.us-west-2.compute.amazonaws.com < ./deploy.sh
+            # Deployed
+            export MSG="#${CIRCLE_BUILD_NUM} ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_BRANCH} is updated"
+            curl -X POST \
+            -H 'Content-type: application/json' \
+            --data '{"text":"'"${MSG}"'"}' \
+            "${SLACK_WEBHOOK}"
+workflows:
+  version: 2
+  deploy-to-ec2:
+    jobs:
+      - deploy:
+          context:
+            - slack        
+          filters:
+            branches:
+              only: master

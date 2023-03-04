@@ -1,0 +1,40 @@
+# STFT parameters
+sample_rate: 16000
+win_length: 32
+hop_length: 16
+n_fft: 512
+window_fn: !name:torch.hamming_window
+
+compute_stft: !new:speechbrain.processing.features.STFT
+    sample_rate: !ref <sample_rate>
+    n_fft: !ref <n_fft>
+    win_length: !ref <win_length>
+    hop_length: !ref <hop_length>
+    window_fn: !ref <window_fn>
+
+compute_istft: !new:speechbrain.processing.features.ISTFT
+    sample_rate: !ref <sample_rate>
+    n_fft: !ref <n_fft>
+    win_length: !ref <win_length>
+    hop_length: !ref <hop_length>
+    window_fn: !ref <window_fn>
+
+spectral_magnitude: !name:speechbrain.processing.features.spectral_magnitude
+    power: 0.5
+
+resynth: !name:speechbrain.processing.signal_processing.resynthesize
+    stft: !ref <compute_stft>
+    istft: !ref <compute_istft>
+
+enhance_model: !new:speechbrain.lobes.models.MetricGAN.EnhancementGenerator
+    input_size: !ref <n_fft> // 2 + 1
+    hidden_size: 200
+    num_layers: 2
+    dropout: 0
+
+modules:
+    enhance_model: !ref <enhance_model>
+
+pretrainer: !new:speechbrain.utils.parameter_transfer.Pretrainer
+    loadables:
+        enhance_model: !ref <enhance_model>
