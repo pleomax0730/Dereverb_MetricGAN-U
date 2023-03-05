@@ -192,7 +192,7 @@ sudo docker push ponddy/dereverb:latest
 
 </details>
 
-<details>
+<details open>
   <summary>Report</summary>
 
 ## GOP score table
