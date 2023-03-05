@@ -200,7 +200,7 @@ sudo docker push ponddy/dereverb:latest
 - Pick 5 users' records
 - Best score is marked in bold
 
-|          | Original | Loud Norm | MetricGAN (sup) | Reverb CLS + MetricGAN (sup) | MetricGAN (unsup) | MetricGAN (unsup) + Sync reverb|
+|          | Original | Loud Norm | MetricGAN (sup) | Reverb CLS + MetricGAN (sup) | MetricGAN (unsup) | MetricGAN (unsup) + Synthesized reverb|
 |----------|:----------:|:-----------:|:-----------------:|:------------------------------:|:-------------------:|:-------------------:|
 | 4405語者 | 79       | **90**        | 88              | 80                           | **90**                | 84       |
 | 4420語者 | 73       | 85        | 79              | 71                           | **86**                | 80       |
@@ -214,7 +214,7 @@ sudo docker push ponddy/dereverb:latest
 - KL divergence 用來量測兩個分布之間的距離，0為最小值，表示兩分布相同
 - Reverb CLS + MetricGAN (sup) 和 Original 的分布相差最遠，同時 Reverb CLS + MetricGAN (sup) 的分布更靠左一些
 
-|          | Loud Norm | MetricGAN (sup) | Reverb CLS + MetricGAN (sup) | MetricGAN (unsup) | MetricGAN (unsup) + Sync reverb |
+|          | Loud Norm | MetricGAN (sup) | Reverb CLS + MetricGAN (sup) | MetricGAN (unsup) | MetricGAN (unsup) + Synthesized reverb |
 |----------|:-----------:|:-----------------:|:------------------------------:|:-------------------:|:-------------------:|
 | Original | 0.00206   | 0.00383         | 0.01041                      | 0.00328           |0.0030       |
 
