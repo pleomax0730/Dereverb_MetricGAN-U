@@ -264,6 +264,10 @@ sudo docker push ponddy/dereverb:latest
 
 </details>
 
+## License
+
+This project incorporates code from SpeechBrain, which is licensed under the Apache License, Version 2.0. For more details, see the [LICENSE](./LICENSE) file.
+
 ```bibtex
 @misc{speechbrainV1,
   title={Open-Source Conversational AI with {SpeechBrain} 1.0},
